@@ -44,9 +44,30 @@ int Main()
 	//allow modern extension features
 	glewExperimental = GL_TRUE;
 
-	if (!glewInit())
+	if (glewInit() != GLEW_OK)
 	{
 		printf("GLEW Initialisation failed!");
+		glfwDestroyWindow(mainWindow);
+		glfwTerminate();
 	}
+	//set viewport size
+	glViewport(0,0,bufferWidth,bufferHeight);
+
+	//loop till window closed
+
+	while (!glfwWindowShouldClose(mainWindow))
+	{
+		//get user actions
+		glfwPollEvents();
+
+		//clear window
+		glClearColor(1.0f,0.0f,0.0f,1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		//swap buffers
+		glfwSwapBuffers(mainWindow);
+
+	}
+
 	return 0;
 }
