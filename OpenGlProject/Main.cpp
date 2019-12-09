@@ -7,11 +7,11 @@
 //define constant windows size params using GLint
 const GLint WIDTH = 800, HEIGHT = 600;
 
-int Main()
+int main()
 {
 	//initialise GLFW
 
-	if (glfwInit())
+	if (!glfwInit())
 	{
 		printf("GLFW initialisation has failed!");
 		glfwTerminate();
